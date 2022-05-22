@@ -5,7 +5,8 @@ import './css/Home.css'
 function Home() {
   return (
     <>
-        <img className="art" src={Art} alt="" width="200px"/>
+      <div>Home</div>
+      <img className="art" src={Art} alt="" width="200px"/>
     </>
 
   )
