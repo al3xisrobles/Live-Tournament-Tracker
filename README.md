@@ -46,7 +46,7 @@ Eli Gottlieb - eligottlieb2025@u.northwestern.edu
 </br>
 [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/eli-gottlieb-7408a3228/)
 
-Project Link: [https://github.com/al3xisrobles/TourneyTracker](https://github.com/al3xisrobles/TourneyTracker)
+Project Link: [https://github.com/al3xisrobles/Live-Tournament-Tracker](https://github.com/al3xisrobles/Live-Tournament-Tracker)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
