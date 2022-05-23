@@ -35,7 +35,6 @@ def serve():
 
 @app.route("/test", methods=['POST'])
 def update_sheet():
-
     return {"201": "Success"}
 
 @app.route("/test2", methods=['GET'])
