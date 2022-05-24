@@ -1,0 +1,43 @@
+:root {
+  --radius: 6px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blinking-dot {
+  width: calc(var(--radius)*2);
+  height: calc(var(--radius)*2);
+  background: #fff;
+  border-radius: var(--radius);
+  animation: blink 1s infinite;
+  margin: 0;
+}
+
+.blink-box {
+  background-color: rgb(245, 99, 94);
+  width: 132px;
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 12px;
+  height: 30px;
+  position: absolute;
+  transform: translate(calc(420px/2), 0);
+}
+
+.blink-box p {
+  color: #fff;
+  font-size: 14px;
+}

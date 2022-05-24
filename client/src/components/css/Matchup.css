@@ -1,24 +1,35 @@
 :root {
   --height: 88px;
+  --radius: 8px;
+  --width: 86vw;
 }
 
 .block {
   height: var(--height);
-  width: 85vw;
+  width: var(--width);
   background-color: #fff;
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--radius);
+  max-width: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .top-half {
   background-color: #fff;
-  border-radius: 12px 12px 0 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.both-halves {
+  display: flex;
+  flex-direction: column;
+  justify-content: left !important;
 }
 
 .halves {
+  align-items: left;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -30,7 +41,7 @@
 
 .bottom-half {
   background-color: rgb(240, 240, 240);
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 
@@ -41,11 +52,11 @@
 }
 
 .top-color {
-  border-radius: 12px 0 0 0;
+  border-radius: var(--radius) 0 0 0;
 }
 
 .bottom-color {
-  border-radius: 0 0 0 12px;
+  border-radius: 0 0 0 var(--radius);
 }
 
 .team-text {
@@ -54,5 +65,9 @@
 
 .score-text {
   position: absolute;
-  right: 20px;
+  right: 12px;
+}
+
+.in-prog {
+  transform: translate(20px, 20px);
 }
