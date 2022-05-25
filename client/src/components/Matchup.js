@@ -23,10 +23,13 @@ export const Matchup = ({
             render an IN PROGRESS bar */}
             {/* {done === "false" &&
             <InProgress/>}
-          </div> */}
+          </div> */} 
+
+          {/* if score == '' just dont print anything where the score or the - usually is */}
 
           <div className="block">
-            <InProgress className="in-prog"/>
+            {done === "false" &&
+              <InProgress className="in-prog"/>}
             <div className="both-halves">
               <div className="top-half halves">
                 <div className="color top-color" style={{backgroundColor: color1}}/>
