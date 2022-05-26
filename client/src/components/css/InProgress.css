@@ -34,7 +34,7 @@
   border-radius: 12px;
   height: 30px;
   position: absolute;
-  transform: translate(calc(420px/2), 0);
+  transform: translate(calc(480px/2), 0);
 }
 
 .blink-box p {

@@ -19,28 +19,58 @@ function Standings() {
     )
   }, [])
 
-  //const data = [['16', 'Frightful', '21', 'Robles', '5'], ['16', 'Team In-play', '-', 'Team Currently Playing', '-'], ['16', 'Team AFK', '-', 'Team Not Playing Yet', '-'], ['16', 'Team 7', '-', 'Team 8', '-'], ['16', 'Team 9', '-', 'Team 10', '-'], ['16', 'Team 11', '-', 'Team 12', '-'], ['16', 'Team 13', '-', 'Team 14', '-'], ['16', 'Team 15', '-', 'Team 16', ''], ['8', 'testtesttest', '', 'Team Currently Playing', ''], ['8', 'Team AFK', '', 'Team 7', ''], ['8', 'Team 10', '', 'Team 11', ''], ['8', 'Team 13', '', 'Team 16', ''], ['4', 'Frightful', '', 'Team AFK', ''], ['4', 'Team 11', '', 'Team 16', ''], ['2', 'Team AFK', '', 'Team 16', '']];
+  const realData = [['16', 'Frightful', '', 'The Anti Social Club', '', 'INPROG'],
+                 ['16', 'Kiss My Ace', '', 'Sig Phi', '', 'INPROG'],
+                 ['16', 'Big Booty Bumpers', '19', 'Sets on the Beach', '21', 'DONE'],
+                 ['16', 'Neighbors', '', 'Fire Breathing Dragons', '', 'INPROG'],
+                 ['16', 'Grimmjob Volleyball Club', '', 'Jae and MC', '', 'INPROG'],
+                 ['16', 'Placeholder', '', 'EAt My Ass', '', 'WAITING'],
+                 ['16', 'Snoopy', '8', 'The Big Ball Destroyers', '21', 'DONE'],
+                 ['16', 'Bullenem', '', 'Caramelos', '', 'WAITING'],
+                 ['8', '', '', 'Kiss My Ace', '', 'WAITING'],
+                 ['8', 'Sets on the Beach', '', '', '', 'WAITING'],
+                 ['8', '', '', '', '', 'WAITING'],
+                 ['8', 'The Big Ball Destroyers', '', '', '', 'WAITING'],
+                 ['4', '', '', '', '', 'WAITING'],
+                 ['4', '', '', '', '', 'WAITING'],
+                 ['2', '', '', '', '', 'WAITING']];
 
-  const realData = [];
-  for(let i = 0; i<data.length;i++) {
-    const temp = []
-    for (let j=0; j<data[i].length;j++) {
-      temp.push([data[i][j]])
-    }
-    realData.push(temp)
-  }
+  // const realData = [];
+  // for(let i = 0; i<data.length;i++) {
+  //   const temp = []
+  //   for (let j=0; j<data[i].length;j++) {
+  //     temp.push([data[i][j]])
+  //   }
+  //   realData.push(temp)
+  // }
 
   //color dictionary
+  const colors = ["blue", "indigo", "purple", "pink", "red", "green", "teal", "cyan", "#8D8D8D", "#be33c5", "#85b59d", "#afefac", "#3a63dd", "#bacb23", "#061a0a", "#d1a302"];
 
-  const colors = ["red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red"];
+  const teams = ["Bullenem",
+                 "Caramelos",
+                 "The Big Ball Destroyers",
+                 "Snoopy",
+                 "Sets on the Beach",
+                 "Jae and MC",
+                 "Grimmjob Volleyball Club",
+                 "Fire Breathing Dragons",
+                 "Placeholder",
+                 "Big Booty Bumpers",
+                 "Sig Phi",
+                 "EAt My Ass",
+                 "Kiss My Ace",
+                 "The Anti Social Club",
+                 "Neighbors",
+                 "Frightful"]
+
   var color_dict = {};
- 
-  //might have to change this depending on if we actually get 16 teams
-  for(let i = 0; i<8; i++) {
-    color_dict[data[i][1]] = colors[2*i];
-    color_dict[data[i][3]] = colors[2*i + 1];
+
+  for(var i = 0; i < teams.length; i++) {
+    color_dict[teams[i]] = colors[i];
   }
 
+  console.log(color_dict);
 
   return (
     <>
@@ -74,135 +104,55 @@ function Standings() {
         <div className="blocks">
           <div className="sweet-sixteen spaced-blocks">
 
-            <Matchup team1= {realData[0][1]}
-                      color1={color_dict[realData[0][1]]}
-                      score1={realData[0][2]}
-                      team2={realData[0][3]}
-                      color2={color_dict[realData[0][3]]}
-                      score2={realData[0][4]}
-                      done="false"/>
+           {realData.slice(0, 8).map((matchup, i) =>
+            <Matchup key={i}
+                      team1={matchup[1]}
+                      color1={color_dict[matchup[1]]}
+                      score1={matchup[2]}
+                      team2={matchup[3]}
+                      color2={color_dict[matchup[3]]}
+                      score2={matchup[4]}
+                      status={matchup[5]}/>)
+           }
 
-            <Matchup team1= {realData[1][1]}
-                      color1={color_dict[realData[1][1]]}
-                      score1={realData[1][2]}
-                      team2={realData[1][3]}
-                      color2={color_dict[realData[1][3]]}
-                      score2={realData[1][4]}
-                      done="false"/>
-
-            <Matchup team1="Yk what I like"
-                      color1="pink"
-                      score1="21"
-                      team2="Underdogs"
-                      color2="green"
-                      score2="18"
-                      done="true"/>
-
-            <Matchup team1="Cmon man"
-                      color1="red"
-                      score1="21"
-                      team2="Fuck eli"
-                      color2="cyan"
-                      score2="18"
-                      done="false"/>
-
-            <Matchup team1="Team Synergy"
-                      color1="blue"
-                      score1="21"
-                      team2="Shahab's Hair"
-                      color2="purple"
-                      score2="18"
-                      done="true"/>
-
-            <Matchup team1="Suck me off"
-                      color1="orange"
-                      score1="-"
-                      team2="Eli ur a cuck"
-                      color2="brown"
-                      score2="-"
-                      done="false"/>
-
-            <Matchup team1="Yk what I like"
-                      color1="pink"
-                      score1="21"
-                      team2="Underdogs"
-                      color2="green"
-                      score2="18"
-                      done="true"/>
-
-            <Matchup team1="Cmon man"
-                      color1="red"
-                      score1="21"
-                      team2="Fuck eli"
-                      color2="cyan"
-                      score2="18"
-                      done="false"/>
           </div>
 
           <div className="elite-eight spaced-blocks">
 
-            <Matchup team1= {realData[8][1]}
-                      color1={(realData[8][1] in color_dict) ? color_dict[realData[8][1]] : "grey"}
-                      score1={realData[8][2]}
-                      team2={realData[8][3]}
-                      color2={color_dict[realData[8][3]]}
-                      score2={realData[8][4]}
-                      done="true"/>
+            {realData.slice(8, 12).map((matchup, i) =>
+            <Matchup team1= {matchup[1]}
+                      color1={(matchup[1] in color_dict) ? color_dict[matchup[1]] : "grey"}
+                      score1={matchup[2]}
+                      team2={matchup[3]}
+                      color2={(matchup[3] in color_dict) ? color_dict[matchup[3]] : "grey"}
+                      score2={matchup[4]}
+                      status={matchup[5]}/>)
+            }
 
-            <Matchup team1="Cmon man"
-                      color1="red"
-                      score1="21"
-                      team2="Fuck eli"
-                      color2="cyan"
-                      score2="18"
-                      done="false"/>
-
-            <Matchup team1="Team Synergy"
-                      color1="blue"
-                      score1="21"
-                      team2="Shahab's Hair"
-                      color2="purple"
-                      score2="18"
-                      done="true"/>
-
-            <Matchup team1="Suck me off"
-                      color1="orange"
-                      score1="-"
-                      team2="Eli ur a cuck"
-                      color2="brown"
-                      score2="-"
-                      done="false"/>
           </div>
 
           <div className="final-four spaced-blocks">
 
-            <Matchup team1="Yk what I like"
-                      color1="pink"
-                      score1="21"
-                      team2="Underdogs"
-                      color2="green"
-                      score2="18"
-                      done="true"/>
-
-            <Matchup team1="Cmon man"
-                      color1="red"
-                      score1="21"
-                      team2="Fuck eli"
-                      color2="cyan"
-                      score2="18"
-                      done="false"/>
+          {realData.slice(12, 14).map((matchup, i) =>
+            <Matchup team1= {matchup[1]}
+                      color1={(matchup[1] in color_dict) ? color_dict[matchup[1]] : "grey"}
+                      score1={matchup[2]}
+                      team2={matchup[3]}
+                      color2={(matchup[3] in color_dict) ? color_dict[matchup[3]] : "grey"}
+                      score2={matchup[4]}
+                      status={matchup[5]}/>)
+            }
           </div>
 
           <div className="championship spaced-blocks">
 
-
-            <Matchup team1="Yk what I like"
-                      color1="pink"
-                      score1="21"
-                      team2="Underdogs"
-                      color2="green"
-                      score2="18"
-                      done="true"/>
+          <Matchup team1= {realData[14][1]}
+                      color1={(realData[14][1] in color_dict) ? color_dict[realData[14][1]] : "grey"}
+                      score1={realData[14][2]}
+                      team2={realData[14][3]}
+                      color2={(realData[14][3] in color_dict) ? color_dict[realData[14][3]] : "grey"}
+                      score2={realData[14][4]}
+                      status={realData[14][5]}/>
           </div>
         </div>
       </div>
