@@ -16,6 +16,7 @@ credentials = service_account.Credentials.from_service_account_file(
 client = gspread.authorize(credentials)
 gsheet = client.open("SNU Volleyball").sheet1
 sh = client.open("SNU Volleyball")
+livesheet = client.open("SNU Volleyball").worksheet("Display")
 
 app = Flask(__name__, static_folder='client/build', static_url_path='')
 CORS(app)
@@ -37,10 +38,14 @@ def serve():
 def update_sheet():
     return {"201": "Success"}
 
-@app.route("/test2", methods=['GET'])
-def join():
-    teams = get_teams()
-    return jsonify(teams)
+@app.route("/standings", methods=['GET'])
+def display():
+    return jsonify(get_games())
+
+def get_games():
+    matchups = livesheet.get_all_values()
+    matchups.pop(0)
+    return matchups
 
 
 if __name__ == "__main__":
