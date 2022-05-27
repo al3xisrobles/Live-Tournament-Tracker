@@ -42,6 +42,21 @@ def update_sheet():
 def standings():
     return jsonify(get_games())
 
+@app.route("/get-teams", methods=['GET'])
+def teams():
+    return jsonify(get_teams())
+
+
+def get_teams():
+    teams = gsheet.get_all_values()
+    if teams:
+        teams.pop(0)
+    for ii in range(len(teams)):
+        teams[ii][0]=str(ii)
+        teams[ii] = list(filter(('').__ne__,teams[ii]))
+
+    return teams
+
 def get_games():
     matchups = livesheet.get_all_values()
     matchups.pop(0)
