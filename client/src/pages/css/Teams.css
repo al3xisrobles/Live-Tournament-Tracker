@@ -1,0 +1,8 @@
+.team-boxes {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    margin-bottom: 5vh;
+    position: relative;
+    z-index: -1;
+  }

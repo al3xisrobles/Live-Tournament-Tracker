@@ -17,6 +17,12 @@ function Home() {
             </div>
           </Link>
 
+          <Link to="/teams">
+            <div className="box standings">
+              <h1 className="box-title">Teams</h1>
+            </div>
+          </Link>
+
           <div>
             <div className="subheader">
               <h3>Be a part of the change</h3>
