@@ -39,7 +39,7 @@ def update_sheet():
     return {"201": "Success"}
 
 @app.route("/standings", methods=['GET'])
-def display():
+def standings():
     return jsonify(get_games())
 
 def get_games():

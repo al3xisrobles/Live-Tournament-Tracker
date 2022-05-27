@@ -27,17 +27,6 @@ function Home() {
               </div>
             </a>
           </div>
-
-          <div>
-            <div className="subheader">
-                <h3>Go for glory</h3>
-            </div>
-            <Link to="teams">
-              <div className="box yourTeam">
-                <h1 className="box-title">Your Team</h1>
-              </div>
-            </Link>
-          </div>
         </div>
       </div>
     </>

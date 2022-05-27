@@ -14,35 +14,28 @@ function Standings() {
     ).then(
       data => {
         setData(data)
-        console.log(data)
       }
     )
   }, [])
 
-  const realData = [['16', 'Frightful', '', 'The Anti Social Club', '', 'INPROG'],
-                 ['16', 'Kiss My Ace', '', 'Sig Phi', '', 'INPROG'],
-                 ['16', 'Big Booty Bumpers', '19', 'Sets on the Beach', '21', 'DONE'],
-                 ['16', 'Neighbors', '', 'Fire Breathing Dragons', '', 'INPROG'],
-                 ['16', 'Grimmjob Volleyball Club', '', 'Jae and MC', '', 'INPROG'],
-                 ['16', 'Placeholder', '', 'EAt My Ass', '', 'WAITING'],
-                 ['16', 'Snoopy', '8', 'The Big Ball Destroyers', '21', 'DONE'],
-                 ['16', 'Bullenem', '', 'Caramelos', '', 'WAITING'],
-                 ['8', '', '', 'Kiss My Ace', '', 'WAITING'],
-                 ['8', 'Sets on the Beach', '', '', '', 'WAITING'],
-                 ['8', '', '', '', '', 'WAITING'],
-                 ['8', 'The Big Ball Destroyers', '', '', '', 'WAITING'],
-                 ['4', '', '', '', '', 'WAITING'],
-                 ['4', '', '', '', '', 'WAITING'],
-                 ['2', '', '', '', '', 'WAITING']];
 
-  // const realData = [];
-  // for(let i = 0; i<data.length;i++) {
-  //   const temp = []
-  //   for (let j=0; j<data[i].length;j++) {
-  //     temp.push([data[i][j]])
-  //   }
-  //   realData.push(temp)
-  // }
+  // const realData = [['16', 'Frightful', '', 'The Anti Social Club', '', 'INPROG'],
+  //                ['16', 'Kiss My Ace', '', 'Sig Phi', '', 'INPROG'],
+  //                ['16', 'Big Booty Bumpers', '19', 'Sets on the Beach', '21', 'DONE'],
+  //                ['16', 'Neighbors', '', 'Fire Breathing Dragons', '', 'INPROG'],
+  //                ['16', 'Grimmjob Volleyball Club', '', 'Jae and MC', '', 'INPROG'],
+  //                ['16', 'Placeholder', '', 'EAt My Ass', '', 'WAITING'],
+  //                ['16', 'Snoopy', '8', 'The Big Ball Destroyers', '21', 'DONE'],
+  //                ['16', 'Bullenem', '', 'Caramelos', '', 'WAITING'],
+  //                ['8', '', '', 'Kiss My Ace', '', 'WAITING'],
+  //                ['8', 'Sets on the Beach', '', '', '', 'WAITING'],
+  //                ['8', '', '', '', '', 'WAITING'],
+  //                ['8', 'The Big Ball Destroyers', '', '', '', 'WAITING'],
+  //                ['4', '', '', '', '', 'WAITING'],
+  //                ['4', '', '', '', '', 'WAITING'],
+  //                ['2', '', '', '', '', 'WAITING']];
+
+  const realData = data;
 
   //color dictionary
   const colors = ["blue", "indigo", "purple", "pink", "red", "green", "teal", "cyan", "#8D8D8D", "#be33c5", "#85b59d", "#afefac", "#3a63dd", "#bacb23", "#061a0a", "#d1a302"];
@@ -66,11 +59,11 @@ function Standings() {
 
   var color_dict = {};
 
+  console.log("realData[14]:", realData[14]);
+
   for(var i = 0; i < teams.length; i++) {
     color_dict[teams[i]] = colors[i];
   }
-
-  console.log(color_dict);
 
   return (
     <>
@@ -108,24 +101,24 @@ function Standings() {
             <Matchup key={i}
                       team1={matchup[1]}
                       color1={color_dict[matchup[1]]}
-                      score1={matchup[2]}
+                      score1={parseInt(matchup[2])}
                       team2={matchup[3]}
                       color2={color_dict[matchup[3]]}
-                      score2={matchup[4]}
+                      score2={parseInt(matchup[4])}
                       status={matchup[5]}/>)
            }
-
           </div>
 
           <div className="elite-eight spaced-blocks">
 
             {realData.slice(8, 12).map((matchup, i) =>
-            <Matchup team1= {matchup[1]}
+            <Matchup key={i}
+                      team1= {matchup[1]}
                       color1={(matchup[1] in color_dict) ? color_dict[matchup[1]] : "grey"}
-                      score1={matchup[2]}
+                      score1={parseInt(matchup[2])}
                       team2={matchup[3]}
                       color2={(matchup[3] in color_dict) ? color_dict[matchup[3]] : "grey"}
-                      score2={matchup[4]}
+                      score2={parseInt(matchup[4])}
                       status={matchup[5]}/>)
             }
 
@@ -134,25 +127,29 @@ function Standings() {
           <div className="final-four spaced-blocks">
 
           {realData.slice(12, 14).map((matchup, i) =>
-            <Matchup team1= {matchup[1]}
+            <Matchup key={i}
+                      team1= {matchup[1]}
                       color1={(matchup[1] in color_dict) ? color_dict[matchup[1]] : "grey"}
-                      score1={matchup[2]}
+                      score1={parseInt(matchup[2])}
                       team2={matchup[3]}
                       color2={(matchup[3] in color_dict) ? color_dict[matchup[3]] : "grey"}
-                      score2={matchup[4]}
+                      score2={parseInt(matchup[4])}
                       status={matchup[5]}/>)
             }
           </div>
 
           <div className="championship spaced-blocks">
 
-          <Matchup team1= {realData[14][1]}
-                      color1={(realData[14][1] in color_dict) ? color_dict[realData[14][1]] : "grey"}
-                      score1={realData[14][2]}
-                      team2={realData[14][3]}
-                      color2={(realData[14][3] in color_dict) ? color_dict[realData[14][3]] : "grey"}
-                      score2={realData[14][4]}
-                      status={realData[14][5]}/>
+          {realData.slice(14, 15).map((matchup, i) =>
+            <Matchup key={i}
+                        team1= {matchup[1]}
+                        color1={(matchup[1] in color_dict) ? color_dict[matchup[1]] : "grey"}
+                        score1={matchup[2]}
+                        team2={matchup[3]}
+                        color2={(matchup[3] in color_dict) ? color_dict[matchup[3]] : "grey"}
+                        score2={matchup[4]}
+                        status={matchup[5]}/>)
+          }
           </div>
         </div>
       </div>
