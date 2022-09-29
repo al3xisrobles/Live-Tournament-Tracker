@@ -16,7 +16,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This website was created by Alexis Robles and Eli Gottlieb when they were first-years at Northwestern University. It was intended to keep track of live standings during a philanthropic volleyball tournament.
+This website was created by Alexis Robles and Eli Gottlieb when they were first-years at Northwestern University. It was intended to keep track of live standings during a philanthropic volleyball tournament through updates to a Google spreadsheet.
 
 The docs' file management:
 * src contains the fullstack development project
